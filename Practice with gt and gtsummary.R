@@ -1,7 +1,8 @@
-# Practice file 'gt', 'gtsummary', 'sjplot'
+# Practice file 'gtsummary', 'sjplot'
 ## useful links
 # https://github.com/yuryzablotski/yuzaR-Blog/blob/master/_posts/2022-10-31-gtsummary/gtsummary.Rmd
 # https://yuzar-blog.netlify.app/posts/2022-10-31-gtsummary/
+# https://yuzar-blog.netlify.app/posts/2022-11-25-gtsummary2/
 # https://yuzar-blog.netlify.app/posts/2022-08-01-sjplot/
 
 
@@ -12,15 +13,15 @@ install.packages('gtsummary')
 
 # Load packages
 library(tidyverse)
-library(sjplot)
 library(gt)
+library(sjplot)
 library(gtsummary)
 
 # Load data
 data('mtcars')
 glimpse(mtcars)
 
-# examples gtsummary
+# examples gtsummary to create tables
 tbl_summary(mtcars)
 
 mtcars %>%
@@ -29,9 +30,11 @@ mtcars %>%
     type = mpg ~ 'continuous', #change variable type
     digits = mpg ~ 2, #change number of decimals
     statistic = all_continuous() ~ "{mean} ({sd})", #change demonstration of statistics
-    sort = everything() ~ 'frequency') #sort table
-
+    sort = everything() ~ 'frequency', #sort table
+    include = c(-hp, -wt)) #include/exclude variables
 mtcars %>%
   tbl_summary(by = gear) %>%
   add_p() 
+
+# examples to summarize regression tables
   
