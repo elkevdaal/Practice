@@ -7,22 +7,25 @@
 
 
 # Install packages
-install.packages('sjPlot')
-install.packages('gt')
-install.packages('gtsummary')
+#install.packages('sjPlot')
+#install.packages('gt')
+#install.packages('gtsummary')
+#install.packages('gtExtras')
 
 # Load packages
 library(tidyverse)
 library(gt)
-library(sjplot)
+library(sjPlot)
 library(gtsummary)
+library(gtExtras)
 
 # Load data
 data('mtcars')
+data('airquality')
 glimpse(mtcars)
 
 # examples gtsummary to create tables
-tbl_summary(mtcars)
+tbl_summary(mtcars) 
 
 mtcars %>%
   tbl_summary(
@@ -36,5 +39,23 @@ mtcars %>%
   tbl_summary(by = gear) %>%
   add_p() 
 
-# examples to summarize regression tables
-  
+# create gt table and apply themes from gtextras
+air_10 <- head(airquality, 20)
+air_10 %>% gt() %>%
+  gt_theme_espn() %>%
+  tab_header('Table example')
+
+air_10 %>% gt() %>%
+  gt_theme_nytimes() %>%
+  tab_header('Table example')
+
+air_10 %>% gt() %>%
+  gt_theme_guardian() %>%
+  tab_header('Table example')
+
+air_10 %>% gt() %>%
+  gt_theme_538() %>%
+  tab_header('Table example')
+
+# examples to summarize regression tables (sjPlot --> tab_model)
+
