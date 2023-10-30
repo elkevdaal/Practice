@@ -33,8 +33,10 @@ airquality %>%
   eda_web_report(
     target        = 'Temp', 
     output_format = "html", 
-    output_file   = "EDA_airquality.html") #EDA report with dlookr
-
+    output_file   = "EDA_airquality.html",
+    output_dir = getwd(),
+    na.rm = TRUE) #EDA report with dlookr
+?eda_web_report
 
 # diagnose data with dlookr
 ## check variable types and missings

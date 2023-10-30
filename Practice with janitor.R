@@ -1,6 +1,4 @@
 # practice with janitor
-# practice with 
-
 # useful links
 # https://github.com/sfirke/janitor
 
